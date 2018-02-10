@@ -30,7 +30,7 @@ function get_html($post_id, $columns, $args, $attachments = array(), $photoswipe
                             alt="<?= $image_alttext ?>"/>
                 </a>
                 <figcaption class="overlay"
-                            style="background-color: <? $photoswipe_options['hover_text_title_background'] ?> ">
+                            style="background-color: <?= $photoswipe_options['hover_text_title_background'] ?> ">
                     <h2><?= $image_caption ?></h2>
                     <span> <?= $photoswipe_options['hover_text_description']; ?> <?= $image_discription ?></span>
                     <?php if(!empty ($photoswipe_options['hover_button_text'])): ?>
