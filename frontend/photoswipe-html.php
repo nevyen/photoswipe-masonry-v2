@@ -14,8 +14,9 @@ function get_html($post_id, $columns, $args, $attachments = array(), $photoswipe
           $_post = get_post($aid);
           $image_alttext = get_post_meta($aid, '_wp_attachment_image_alt', true);
           $image_caption = $_post->post_excerpt;
+          $image_discription = $_post->post_content;
           ?>
-          <figure class="msnry_item" itemscope itemtype="http://schema.org/ImageObject" <?= ($photoswipe_options['use_masonry'] && $i > $args['item_count'] ? 'style="display:none;"' : '') ?>>
+          <figure class="msnry_item hovereffect" itemscope itemtype="http://schema.org/ImageObject" <?= ($photoswipe_options['use_masonry'] && $i > $args['item_count'] ? 'style="display:none;"' : '') ?>>
             <a href="<?= $full[0] ?>" itemprop="contentUrl" data-size="<?= $full[1] . 'x' . $full[2] ?>" data-caption="<?= $image_caption ?>">
               <img
               height="<?= $thumb[2] ?>"
@@ -25,8 +26,15 @@ function get_html($post_id, $columns, $args, $attachments = array(), $photoswipe
               itemprop="thumbnail"
               alt="<?= $image_alttext ?>" />
             </a>
-            <figcaption class="photoswipe-gallery-caption"><?= $image_caption ?></figcaption>
+            <figcaption class="overlay">
+                <h2><?= $image_caption ?></h2>
+                <span>Größe: <?= $image_discription ?></span>
+                <p>
+                    <button class="info">Vergrößern</button>
+                </p>
+            </figcaption>
           </figure>
+
         <?php endforeach;
       endif; ?>
     </div>
