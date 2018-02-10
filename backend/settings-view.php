@@ -60,6 +60,23 @@ function show_settings_view($options) {
 							echo Regenerate_Thumbnails::get_start_regeneration_button();
 							?>
 						</div>
+                        <?php if(!$options['use_hover']) : ?>
+                        <div class="form-group">
+                            <label for="hover_text_description">Description text</label>
+                            <p>If you want to display an specific text before each description</p>
+                            <input id="hover_text_description" name="hover_text_description" type="text" value="<?= ($options['hover_text_description']);?>" />
+                        </div>
+                            <div class="form-group">
+                                <label for="hover_text_title_background">Title Background Color</label>
+                                <p>Here you can chose the background color which appears at the title (default is transparent). </p>
+                                <input id="hover_text_title_background" name="hover_text_title_background" type="text" value="<?= ($options['hover_text_title_background']);?>" />
+                            </div>
+                            <div class="form-group">
+                                <label for="hover_button_text">Button Text</label>
+                                <p>Put here which text should be displayed on the button. (if none no button will appear)</p>
+                                <input id="hover_button_text" name="hover_button_text" type="text" value="<?= ($options['hover_button_text']);?>" />
+                            </div>
+                        <?php endif; ?>
 					</div>
 				</div>
 				<div class="block right">
@@ -83,6 +100,10 @@ function show_settings_view($options) {
 							<input id="use_masonry" name="use_masonry" type="checkbox" value="checkbox" <?= !$options['use_masonry'] ? "checked='checked'" : '' ?> />
 							<label for="use_masonry">Don't use Masonry</label>
 						</div>
+                        <div class="form-group">
+                            <input id="use_hover" name="use_hover" type="checkbox" value="checkbox" <?= !$options['use_hover'] ? "checked='checked'" : '' ?> />
+                            <label for="use_hover">Use Hovereffect</label>
+                        </div>
 						<div class="form-group">
 							<input class="button-primary" type="submit" name="photoswipe_save" value="Save Changes" />
 						</div>

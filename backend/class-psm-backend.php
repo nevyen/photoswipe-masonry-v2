@@ -41,7 +41,11 @@ class Backend {
 				'show_controls' => (bool) (isset($_POST['show_controls']) ? true : false),
 				'show_captions' => (bool) (isset($_POST['show_captions']) ? true : false),
 				'use_masonry' => (bool) (isset($_POST['use_masonry']) ? false : true),
-				'item_count' => (int) (isset($_POST['item_count']) ? $_POST['item_count'] : false)
+				'item_count' => (int) (isset($_POST['item_count']) ? $_POST['item_count'] : false),
+                'use_hover' => (bool) (isset($_POST['use_hover']) ? false : true),
+                'hover_text_description' => stripslashes($_POST['hover_text_description']),
+                'hover_text_title_background' => stripslashes($_POST['hover_text_title_background']),
+                'hover_button_text' => stripslashes($_POST['hover_button_text']),
 			);
 			$psm_vars['photoswipe_options'] = array_merge($current_options, $options_new);
 			update_option('photoswipe_options', self::$photoswipe_options);

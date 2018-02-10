@@ -75,8 +75,6 @@ function get_style($photoswipe_options) {
   }
 
   .hovereffect {
-      width: 100%;
-      height: 100%;
       float: left;
       overflow: hidden;
       position: relative;
@@ -85,14 +83,12 @@ function get_style($photoswipe_options) {
   }
 
   .hovereffect .overlay {
-      width: 100%;
-      height: 100%;
       position: absolute;
       overflow: hidden;
+      width:100%;
       top: 0;
       left: 0;
       opacity: 0;
-      background-color: rgba(0, 0, 0, 0.5);
       -webkit-transition: all .4s ease-in-out;
       transition: all .4s ease-in-out
   }
@@ -105,7 +101,6 @@ function get_style($photoswipe_options) {
   }
 
   .hovereffect h2 {
-      font-family: 'kingthings_wroteregular', Arial, sans-serif;
       margin-top: 20px;
       text-transform: uppercase;
       color: #fff;

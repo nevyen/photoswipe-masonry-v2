@@ -20,7 +20,11 @@ class Photoswipe_Options {
 				'max_image_height' => '2400',
 				'max_image_width' => '1800',
 				'white_theme' => false,
-				'crop_thumbnails' => false
+				'crop_thumbnails' => false,
+                'use_hover' => false,
+                'hover_text_description' => '',
+                'hover_text_title_background' => 'transparent',
+                'hover_button_text' => 'Click me'
 			);
 			update_option('photoswipe_options', $options);
 		}else if ( !isset( $options['crop_thumbnails'] ) ){

@@ -16,25 +16,46 @@ function get_html($post_id, $columns, $args, $attachments = array(), $photoswipe
           $image_caption = $_post->post_excerpt;
           $image_discription = $_post->post_content;
           ?>
-          <figure class="msnry_item hovereffect" itemscope itemtype="http://schema.org/ImageObject" <?= ($photoswipe_options['use_masonry'] && $i > $args['item_count'] ? 'style="display:none;"' : '') ?>>
-            <a href="<?= $full[0] ?>" itemprop="contentUrl" data-size="<?= $full[1] . 'x' . $full[2] ?>" data-caption="<?= $image_caption ?>">
-              <img
-              height="<?= $thumb[2] ?>"
-              width="<?= $thumb[1] ?>"
-              data-src="<?= $thumb[0] ?>"
-              src="<?= ($i <= $args['item_count'] || !$photoswipe_options['use_masonry'] ? $thumb[0] : '') ?>"
-              itemprop="thumbnail"
-              alt="<?= $image_alttext ?>" />
-            </a>
-            <figcaption class="overlay">
-                <h2><?= $image_caption ?></h2>
-                <span>Größe: <?= $image_discription ?></span>
-                <p>
-                    <button class="info">Vergrößern</button>
-                </p>
-            </figcaption>
-          </figure>
-
+            <?php if (!$photoswipe_options['use_hover']):?>
+            <figure class="msnry_item hovereffect" itemscope
+                    itemtype="http://schema.org/ImageObject" <?= ($photoswipe_options['use_masonry'] && $i > $args['item_count'] ? 'style="display:none;"' : '') ?>>
+                <a href="<?= $full[0] ?>" itemprop="contentUrl" data-size="<?= $full[1] . 'x' . $full[2] ?>"
+                   data-caption="<?= $image_caption ?>">
+                    <img
+                            height="<?= $thumb[2] ?>"
+                            width="<?= $thumb[1] ?>"
+                            data-src="<?= $thumb[0] ?>"
+                            src="<?= ($i <= $args['item_count'] || !$photoswipe_options['use_masonry'] ? $thumb[0] : '') ?>"
+                            itemprop="thumbnail"
+                            alt="<?= $image_alttext ?>"/>
+                </a>
+                <figcaption class="overlay"
+                            style="background-color: <? $photoswipe_options['hover_text_title_background'] ?> ">
+                    <h2><?= $image_caption ?></h2>
+                    <span> <?= $photoswipe_options['hover_text_description']; ?> <?= $image_discription ?></span>
+                    <?php if(!empty ($photoswipe_options['hover_button_text'])): ?>
+                        <p>
+                            <button class="info"><?= $photoswipe_options['hover_button_text'] ?></button>
+                        </p>
+                    <?php endif; ?>
+                </figcaption>
+            </figure>
+        <?php else: ?>
+            <figure class="msnry_item" itemscope
+                    itemtype="http://schema.org/ImageObject" <?= ($photoswipe_options['use_masonry'] && $i > $args['item_count'] ? 'style="display:none;"' : '') ?>>
+                <a href="<?= $full[0] ?>" itemprop="contentUrl" data-size="<?= $full[1] . 'x' . $full[2] ?>"
+                   data-caption="<?= $image_caption ?>">
+                    <img
+                            height="<?= $thumb[2] ?>"
+                            width="<?= $thumb[1] ?>"
+                            data-src="<?= $thumb[0] ?>"
+                            src="<?= ($i <= $args['item_count'] || !$photoswipe_options['use_masonry'] ? $thumb[0] : '') ?>"
+                            itemprop="thumbnail"
+                            alt="<?= $image_alttext ?>"/>
+                </a>
+                <figcaption class="photoswipe-gallery-caption"><?= $image_caption ?></figcaption>
+            </figure>
+        <?php endif; ?>
         <?php endforeach;
       endif; ?>
     </div>
